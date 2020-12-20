@@ -1,5 +1,7 @@
 class MaintenanceRecord < ApplicationRecord
-  validates :summary, presence: true
   validates :mileage, numericality: { only_integer: true }
-  validates :date_performed, on_or_before: lambda { Date.current }
+  validates :date_performed, presence: true
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :cost, numericality: true
 end

@@ -5,15 +5,3 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-#
-Car.create(
-  vin: "ZACCJBBB7JPH40001",
-  year: 2018,
-  make: "JEEP",
-  model: "Renegade",
-  trim: "Latitude",
-  engine_displacement: 2.4,
-  num_cylinders: 4,
-  drive_type: "4WD",
-  transmission: "Automatic"
-)
