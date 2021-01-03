@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get 'records/create'
-      get 'records/destroy'
       get 'cars/index'
       post 'cars/create'
-      get 'cars/show/:id', to: 'cars#show'
-      delete 'cars/destroy/:id', to: 'cars#destroy'
+      get 'cars/:vin', to: 'cars#show'
+      delete 'cars/destroy/:vin', to: 'cars#destroy'
+
+      get 'records/:vin', to: 'records#show'
+      post 'records/:vin/create', to: 'records#create'
+      delete 'records/destroy/:id', to: 'records#destroy'
     end
   end
   root 'homepage#index'

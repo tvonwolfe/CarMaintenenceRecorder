@@ -1,6 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getAllCars } from "../api.js";
 
 export default () => (
-  <h1>Test2</h1>
+  <h1>Test</h1>
 );

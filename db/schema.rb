@@ -16,15 +16,17 @@ ActiveRecord::Schema.define(version: 2020_12_06_221414) do
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
-    t.string "make"
-    t.string "model"
-    t.float "engine_displacement"
-    t.integer "num_cyl"
-    t.string "drive_type"
-    t.string "transmission"
-    t.integer "year"
+    t.string "vin", null: false
+    t.string "make", null: false
+    t.string "model", null: false
+    t.float "engine_displacement", null: false
+    t.integer "num_cyl", null: false
+    t.string "drive_type", null: false
+    t.string "transmission", null: false
+    t.integer "year", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["vin"], name: "index_cars_on_vin", unique: true
   end
 
   create_table "maintenance_records", force: :cascade do |t|

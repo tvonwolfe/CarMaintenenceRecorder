@@ -13,7 +13,8 @@ Car.create(
   num_cyl: 4,
   engine_displacement: 2.0,
   drive_type: Car::DRIVE_TYPE_FWD,
-  transmission: Car::TRANSMISSION_TYPE_MANUAL
+  transmission: Car::TRANSMISSION_TYPE_MANUAL,
+  vin: '3VWYT7AU2GM021246'
 )
 
 Car.create(
@@ -23,5 +24,6 @@ Car.create(
   num_cyl: 4,
   engine_displacement: 2.4,
   drive_type: Car::DRIVE_TYPE_4WD,
-  transmission: Car::TRANSMISSION_TYPE_AUTO
+  transmission: Car::TRANSMISSION_TYPE_AUTO,
+  vin: 'ZACCJBBB7JPH40001'
 )

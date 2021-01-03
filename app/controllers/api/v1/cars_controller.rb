@@ -16,7 +16,7 @@ class Api::V1::CarsController < ApplicationController
 
   def show
     if car
-      render json: car
+      render json: { car: car, records: records }
     else
       render json: car.errors
     end
@@ -42,15 +42,15 @@ class Api::V1::CarsController < ApplicationController
   private 
 
   def car_params
-    params.permit(:make, :model, :year, :num_cyl, :engine_displacement, :drive_type, :transmission)
+    params.permit(:vin, :make, :model, :year, :num_cyl, :engine_displacement, :drive_type, :transmission)
   end
 
   def car
-    @car = Car.find(params[:id])
+    @car = Car.find_by(vin: params[:vin])
   end
 
   def records 
-    @records = MaintenanceRecord.where(car_id: @car.id)
+    @records = MaintenanceRecord.where(cars_id: @car.id)
   end
 
 end
