@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2020_12_06_221414) do
     t.date "date_performed"
     t.integer "mileage"
     t.decimal "cost"
-    t.bigint "cars_id"
-    t.index ["cars_id"], name: "index_maintenance_records_on_cars_id"
+    t.bigint "car_id"
+    t.index ["car_id"], name: "index_maintenance_records_on_car_id"
   end
 
-  add_foreign_key "maintenance_records", "cars", column: "cars_id"
+  add_foreign_key "maintenance_records", "cars"
 end

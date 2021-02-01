@@ -4,5 +4,5 @@ class MaintenanceRecord < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :cost, numericality: true
-  belongs_to :cars
+  belongs_to :car, class_name: "Car"
 end

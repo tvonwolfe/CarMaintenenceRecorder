@@ -1,3 +1,75 @@
-// Place all the styles related to the Homepage controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+@import "./variables";
+@import "./buttons.scss";
+
+#root {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 50px auto 40px;
+}
+
+.header-container {
+  width: 95%;
+  margin: 10px auto;
+
+  .home-link {
+    text-decoration: none !important;
+    color: $dark-grey;
+
+    @media (max-width: 799px) {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 800px) {
+    text-align: center;
+  }
+}
+
+.car-list-container {
+  justify-content: center;
+
+  @media (min-width: 800px) {
+    width: 720px;
+  }
+  @media (max-width: 799px) {
+    width: 95%;
+  }
+
+  margin: 40px auto;
+
+  &.loading {
+    margin: auto;
+  }
+}
+
+.car-listing-item {
+  border-top: 1px solid $light-grey;
+
+  .inner-car-listing-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    line-height: 1.5rem;
+    transition: background-color 0.15s;
+
+    &:hover {
+      background-color: $list-item-hover;
+    }
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+    }
+
+    .inner-data {
+      color: $light-grey;
+      font-size: 0.9rem;
+    }
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid $light-grey;
+  }
+}

@@ -18,7 +18,7 @@ Car.create(
 )
 
 Car.create(
-  make: 'JEEP',
+  make: 'Jeep',
   model: 'Renegade',
   year: 2018,
   num_cyl: 4,
