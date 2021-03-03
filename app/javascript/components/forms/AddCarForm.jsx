@@ -22,7 +22,16 @@ const generateYearRange = (start, end) =>
 export const NewCarModal = () => {
   const [modal, setModal] = useState(false);
   const toggleModal = () => setModal(!modal);
-  const [carData, setCarData] = useState({});
+  const [carData, setCarData] = useState({
+    year: 2021,
+    make: '',
+    model: '',
+    transmission: '',
+    driveType: 'AWD',
+    vin: '',
+    numCyl: 0,
+    engineDisplacement: 0.0,
+  });
 
   const onYearChange = (event) => {
     event.preventDefault();
@@ -53,6 +62,22 @@ export const NewCarModal = () => {
     setCarData({
       ...carData,
       transmission: event.target.value,
+    });
+  };
+
+  const onDriveTypeChange = (event) => {
+    event.preventDefault();
+    setCarData({
+      ...carData,
+      driveType: event.target.value,
+    });
+  };
+
+  const onVinChange = (event) => {
+    event.preventDefault();
+    setCarData({
+      ...carData,
+      vin: event.target.value,
     });
   };
 
@@ -88,6 +113,7 @@ export const NewCarModal = () => {
               name="make"
               type="text"
               placeholder="Alfa-Romeo"
+              onInput={onMakeChange}
               required
             />
           </FormGroup>
@@ -98,6 +124,7 @@ export const NewCarModal = () => {
               name="model"
               type="text"
               placeholder="Giulia"
+              onInput={onModelChange}
               required
             />
           </FormGroup>
@@ -108,13 +135,13 @@ export const NewCarModal = () => {
                 <FormGroup>
                   <FormGroup check>
                     <Label check>
-                      <Input type="radio" name="transmission" required />
+                      <Input type="radio" name="transmission" value="Standard" onInput={onTransmissionChange} required />
                       Standard
                     </Label>
                   </FormGroup>
                   <FormGroup check>
                     <Label check>
-                      <Input type="radio" name="transmission" required />
+                      <Input type="radio" name="transmission" valueu="Automatic" onInput={onTransmissionChange} required />
                       Automatic
                     </Label>
                   </FormGroup>
@@ -124,12 +151,28 @@ export const NewCarModal = () => {
             <Col md={8}>
               <FormGroup>
                 <Label for="drive_type">Drive Type</Label>
-                <Input id="drive_type" name="drive_type" type="select" required>
+                <Input id="drive_type" name="drive_type" type="select" onInput={onDriveTypeChange} required>
                   <option>AWD</option>
                   <option>FWD</option>
                   <option>RWD</option>
                   <option>4WD</option>
                 </Input>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="num_cyl">Cylinder Count</Label>
+                <Input id="num_cyl" name="num_cyl" type="select" required>
+                  {[1, 2, 3, 4, 5, 6, 8, 10, 12, 16].map(num => <option>{num}</option>)}
+                </Input>
+              </FormGroup>
+            </Col>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="displacement">Displacement (L)</Label>
+                <Input id="displacement" name="displacement" type="number" min="0.1" max="10.0" step="0.1" onInput={onDriveTypeChange} required /> 
               </FormGroup>
             </Col>
           </Row>
@@ -140,13 +183,14 @@ export const NewCarModal = () => {
               type="text"
               minLength={carData.year < 1981 ? 5 : 17}
               maxLength={carData.year < 1981 ? 13 : 17}
-              placeholder={`Must be ${
+              placeholder={`${
                 carData.year < 1981 ? "5-13" : "17"
               } characters`}
+              onInput={onVinChange}
               required
             />
           </FormGroup>
-          <Button>Add to Garage</Button>
+          <Button onClick={() => console.log(carData)}>Add to Garage</Button>
         </Form>
       </Modal>
     </div>
