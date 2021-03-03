@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllCars } from "../api.js";
 import { BeatLoader } from "react-spinners";
-import { Button } from "reactstrap";
+import { NewCarModal } from "./forms/AddCarForm";
 import CarList from "./CarList";
 
 const cars = () => {
@@ -20,11 +20,13 @@ const cars = () => {
   return (
     <div className={`car-list-container ${isLoading ? "loading" : ""}`}>
       {isLoading ? (
-        <BeatLoader color={"gray"} size={75} />
+        <BeatLoader className="loader" color={"gray"} size={75} />
       ) : (
-        <CarList cars={cars} />
+        <>
+          <CarList cars={cars} />
+          <NewCarModal />
+        </>
       )}
-      <Button id="add-car">Add Car...</Button>
     </div>
   );
 };
