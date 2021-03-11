@@ -11,7 +11,10 @@ const CarList = ({ cars }) => (
 
 const CarListing = ({ carData }) => (
   <div className="car-listing-item">
-    <Link to={`/car/${carData.vin}`} style={{ textDecoration: "none" }}>
+    <Link
+      to={`/car/${carData.vin}`}
+      style={{ color: "grey", textDecoration: "none" }}
+    >
       <div className="inner-car-listing-item">
         {carData.year} {carData.make} {carData.model}
         <span className="inner-data">{carData.vin}</span>

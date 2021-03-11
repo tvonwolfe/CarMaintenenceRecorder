@@ -25,30 +25,6 @@
   }
 }
 
-.car-list-container {
-  &.loading {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  @media (min-width: 800px) {
-    width: 720px;
-  }
-  @media (max-width: 799px) {
-    width: 95%;
-  }
-
-  margin: 2rem auto;
-
-  .loader {
-    margin: auto;
-  }
-
-  .add-car-button {
-    margin-top: 1.5rem;
-  }
-}
-
 .car-listing-item {
   border-top: 1px solid $light-grey;
 

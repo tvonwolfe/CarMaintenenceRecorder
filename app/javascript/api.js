@@ -1,5 +1,5 @@
-const API = "/api/v1";
-const carsAPI = `${API}/cars`;
+const API_ROUTE = "/api/v1";
+const CAR_API = `${API_ROUTE}/cars`;
 
 const getData = (apiRoute) =>
   fetch(apiRoute, {
@@ -22,13 +22,12 @@ const postData = (apiRoute, data) =>
     body: JSON.stringify(data),
   }).then((response) => response.json());
 
-export const addCar = (data) => {
-  postData(`${carsAPI}/create`, data);
+const API = {
+  addCar: (car) => postData(`${CAR_API}/create`, car),
+  // fetch a single car, with its maintenance records.
+  getCar: (vin) => getData(`${CAR_API}/${vin}`),
+  // fetch all cars.
+  getAllCars: () => getData(`${CAR_API}/index`),
 };
-// fetch a single car, with its maintenance records.
-export const getCar = (vin) => getData(`${carsAPI}/${vin}`);
 
-// fetch all cars.
-export const getAllCars = () => getData(`${carsAPI}/index`);
-
-export default getAllCars;
+export default API;

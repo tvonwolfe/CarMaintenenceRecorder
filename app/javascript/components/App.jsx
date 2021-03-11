@@ -8,7 +8,7 @@ const VERSION = "0.0.1";
 export default () => (
   <>
     <Header />
-    {Routes}
+    <div className="app-container"> {Routes} </div>
     <Footer appVersion={VERSION} />
   </>
 );

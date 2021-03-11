@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getCar } from "../api";
+import API from "../api";
 import { BeatLoader } from "react-spinners";
 
 const Car = (props) => {
@@ -12,7 +12,7 @@ const Car = (props) => {
   } = props;
 
   useEffect(() => {
-    getCar(vin)
+    API.getCar(vin)
       .then((response) => {
         setCar(response);
         setIsLoading(false);
@@ -20,12 +20,16 @@ const Car = (props) => {
       .catch((error) => console.log(error));
   }, []);
 
-  return isLoading ? (
-    <BeatLoader color={"gray"} size={75} />
-  ) : (
-    <h1>
-      {car.year} {car.make} {car.model}
-    </h1>
+  return (
+    <div className="car-info-container">
+      {isLoading ? (
+        <BeatLoader color={"gray"} size={75} />
+      ) : (
+        <h3 className="car-header">
+          {car.year} {car.make} {car.model}
+        </h3>
+      )}
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_06_221414) do
+ActiveRecord::Schema.define(version: 2021_03_09_024509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2020_12_06_221414) do
     t.string "vin", null: false
     t.string "make", null: false
     t.string "model", null: false
-    t.float "engine_displacement", null: false
-    t.integer "num_cyl", null: false
     t.string "drive_type", null: false
     t.string "transmission", null: false
     t.integer "year", null: false
