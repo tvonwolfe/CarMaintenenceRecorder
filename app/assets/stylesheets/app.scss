@@ -1,0 +1,42 @@
+@import "./variables";
+
+.app-container {
+  height: 100vh;
+
+  .app-view {
+    display: grid;
+    height: calc(100% - 40px);
+    grid-template-rows: 50px auto 40px;
+    margin: 0 auto;
+
+    @media (min-width: 800px) {
+      width: 720px;
+    }
+    @media (max-width: 799px) {
+      width: 95%;
+    }
+  }
+
+  .loading {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5rem;
+  }
+
+  .loader {
+    margin: auto;
+  }
+
+  .add-car-button {
+    margin-top: 1.5rem;
+  }
+
+}
+
+.back-link {
+  border: 1px solid grey;
+  border-radius: 4px;
+  background-color: white;
+  color: $dark-grey;
+  text-decoration: none !important;
+}
