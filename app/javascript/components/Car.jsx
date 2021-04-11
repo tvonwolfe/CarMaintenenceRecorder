@@ -5,6 +5,7 @@ import { BeatLoader } from "react-spinners";
 const Car = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [car, setCar] = useState({});
+  const [records, setRecords] = useState({});
   const {
     match: {
       params: { vin },
@@ -15,6 +16,14 @@ const Car = (props) => {
     API.getCar(vin)
       .then((response) => {
         setCar(response);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    API.getRecordsForCar(vin)
+      .then((response) => {
+        setRecords(records);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));

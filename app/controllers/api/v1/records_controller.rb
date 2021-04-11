@@ -15,6 +15,17 @@ class Api::V1::RecordsController < ApplicationController
     end
   end
 
+  def all_for_vin
+    if params[:vin].present?
+      if car
+        records = MaintenanceRecord.joins(:car).where(cars: { id: car.id })
+        render json: records
+      end
+    else
+      render json: { error: "Need a VIN to lookup" }
+    end
+  end
+
   def destroy
     record&.destroy
     render json: { message: 'Record deleted.' }

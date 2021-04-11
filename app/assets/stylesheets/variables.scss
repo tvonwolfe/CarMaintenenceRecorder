@@ -1,6 +1,11 @@
+// colors
 $light-grey: #CCC;
 $dark-grey: #555;
-
 $primary-blue: #4c566a;
-
 $list-item-hover: #EEE;
+
+// dimensions
+$view-width-desktop: 720px;
+$view-width-mobile: 95%;
+$back-button-link-area-width: $view-width-desktop / 10;
+$responsive-breakpoint: 800px;

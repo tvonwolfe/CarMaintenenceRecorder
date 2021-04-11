@@ -1,0 +1,41 @@
+@import "./variables";
+
+.header-container {
+  display: grid;
+  width: 100%;
+  margin: 10px 0;
+  justify-items: center;
+  grid-template-columns: 10% 90%;
+  grid-template-areas: 'back-link home-link';
+  $link-area-width: calc(10%);
+
+  .home-link {
+    text-decoration: none !important;
+    color: $dark-grey;
+    grid-area: home-link;
+    margin-left: -$back-button-link-area-width;
+
+
+    @media (max-width: 799px) {
+      font-size: 2rem;
+    }
+  }
+
+  .back-link {
+    grid-area: back-link;
+    background-color: white;
+    text-decoration: none !important;
+    border: 1px solid $dark-grey;
+    border-radius: 4px;
+    opacity: 75%;
+    margin: 10px;
+
+    img {
+      height: 20px;
+      margin-bottom: 2px;
+      margin-right: 2px;
+    }
+  }
+
+}
+

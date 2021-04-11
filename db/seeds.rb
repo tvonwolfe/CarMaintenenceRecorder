@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-Car.create(
+golf = Car.create(
   make: 'Volkswagen',
   model: 'Golf GTI',
   year: 2016,
@@ -23,3 +23,12 @@ Car.create(
   transmission: Car::TRANSMISSION_TYPE_AUTO,
   vin: 'ZACCJBBB7JPH40001'
 )
+
+record = MaintenanceRecord.create(
+  mileage: 12345,
+  date_performed: Date.today,
+  title: "Oil Change",
+  description: "Test",
+  cost: 60.00
+)
+golf.maintenance_records << record

@@ -6,7 +6,8 @@ Rails.application.routes.draw do
       get 'cars/:vin', to: 'cars#show'
       delete 'cars/destroy/:vin', to: 'cars#destroy'
 
-      get 'records/:vin', to: 'records#show'
+      get 'records/:id', to: 'records#show'
+      get 'records', to: 'records#all_for_vin'
       post 'records/:vin/create', to: 'records#create'
       delete 'records/destroy/:id', to: 'records#destroy'
     end

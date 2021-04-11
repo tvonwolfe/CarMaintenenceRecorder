@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../components/Home";
 import Car from "../components/Car";
 import AddCarForm from "../components/forms/AddCarForm";
+import Header from "../components/Header";
 
-export default (
+export default () => (
   <Router>
+    <Header />
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/car/new" exact component={AddCarForm} />
