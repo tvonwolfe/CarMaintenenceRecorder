@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Car from "../components/Car";
 import AddCarForm from "../components/forms/AddCarForm";
 import Header from "../components/Header";
+import AddRecordForm from "../components/forms/AddRecordForm";
 
 export default () => (
   <Router>
@@ -12,6 +13,7 @@ export default () => (
       <Route path="/" exact component={Home} />
       <Route path="/car/new" exact component={AddCarForm} />
       <Route path="/car/:vin" exact component={Car} />
+      <Route path="/car/:vin/add" exact component={AddRecordForm} />
     </Switch>
   </Router>
 );

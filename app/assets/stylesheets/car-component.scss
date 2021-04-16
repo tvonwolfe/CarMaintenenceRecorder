@@ -1,13 +1,33 @@
 @import "variables.scss";
 
 .car-info-container {
-  display: flex;
-  margin-top: 1.5rem;
+  &.loading {
+    margin: 1.5rem auto;
+  }
 
   .car-header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
   }
-  
+
+  .car-info {
+    .cost-total {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 2.5rem;
+    }
+  }
+
+  .records-list {
+    margin-top: 1.5rem;
+
+    .record-item {
+      &:hover {
+        cursor: pointer;
+        background-color: $list-item-hover;
+      }
+    }
+  }
 }
 
 .car-list {

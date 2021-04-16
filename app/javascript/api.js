@@ -23,14 +23,11 @@ const postData = (apiRoute, data) =>
     body: JSON.stringify(data),
   }).then((response) => response.json());
 
-const updateData = (apiRoute, data) =>
-  fetch(apiRoute, {
-    method: "PUT",
+const deleteData = (resourceRoute) =>
+  fetch(resourceRoute, {
+    method: "DELETE",
     mode: "cors",
     credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
   }).then((response) => response.json());
 
 const API = {
@@ -39,7 +36,10 @@ const API = {
   getCar: (vin) => getData(`${CAR_API}/${vin}`),
   // fetch all cars.
   getAllCars: () => getData(`${CAR_API}/index`),
+  deleteCar: (vin) => deleteData(`${CAR_API}/destroy/${vin}`),
   getRecordsForCar: (vin) => getData(`${RECORDS_API}?vin=${vin}`),
+  addRecord: (record) => postData(`${RECORDS_API}/create`, record),
+  deleteRecord: (id) => deleteData(`${CAR_API}/destroy/${id}`),
 };
 
 export default API;

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_024509) do
+ActiveRecord::Schema.define(version: 2021_04_12_002526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_024509) do
     t.text "description"
     t.date "date_performed"
     t.integer "mileage"
-    t.decimal "cost"
+    t.integer "cost"
     t.bigint "car_id"
     t.index ["car_id"], name: "index_maintenance_records_on_car_id"
   end

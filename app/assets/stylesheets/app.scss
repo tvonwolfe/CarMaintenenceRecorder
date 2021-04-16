@@ -7,6 +7,7 @@
     display: grid;
     height: calc(100% - 40px);
     grid-template-rows: 70px auto 40px;
+    row-gap: 1rem;
     margin: 0 auto;
 
     @media (min-width: $responsive-breakpoint) {
@@ -26,9 +27,12 @@
   .loader {
     margin: auto;
   }
+}
 
-  .add-car-button {
-    margin-top: 1.5rem;
+.listing-item {
+  transition: background-color 0.15s;
+  &:hover {
+    cursor: pointer;
+    background-color: $list-item-hover;
   }
-
 }

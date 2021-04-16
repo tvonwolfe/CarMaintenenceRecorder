@@ -24,8 +24,13 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def destroy
-    car&.destroy
-    render json: { message: 'Car deleted.' }
+    if car
+      MaintenanceRecord.where(car_id: car.id).destroy_all
+      car&.destroy
+      render json: { message: 'Success' }
+    else
+      render json: { message: 'Not found' }, status: :not_found
+    end
   end
 
   private 

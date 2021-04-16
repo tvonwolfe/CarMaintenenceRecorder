@@ -29,6 +29,6 @@ record = MaintenanceRecord.create(
   date_performed: Date.today,
   title: "Oil Change",
   description: "Test",
-  cost: 60.00
+  cost: 6000
 )
 golf.maintenance_records << record

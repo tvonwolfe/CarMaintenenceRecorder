@@ -1,26 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Table } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
-const CarList = ({ cars }) => (
-  <div className="car-list">
-    {cars.map((car, index) => (
-      <CarListing key={index} carData={car} />
-    ))}
-  </div>
-);
-
-const CarListing = ({ carData }) => (
-  <div className="car-listing-item">
-    <Link
-      to={`/car/${carData.vin}`}
-      style={{ color: "grey", textDecoration: "none" }}
-    >
-      <div className="inner-car-listing-item">
-        {carData.year} {carData.make} {carData.model}
-        <span className="inner-data">{carData.vin}</span>
-      </div>
-    </Link>
-  </div>
-);
+const CarList = ({ cars }) => {
+  const history = useHistory();
+  return (
+    <Table hover responsive>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Make</th>
+          <th>Model</th>
+          <th>VIN</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cars.map((car, index) => (
+          <tr
+            key={index}
+            className="listing-item"
+            onClick={() => history.push(`/car/${car.vin}`)}
+          >
+            <td>{car.year}</td>
+            <td>{car.make}</td>
+            <td>{car.model}</td>
+            <td>{car.vin}</td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};
 
 export default CarList;

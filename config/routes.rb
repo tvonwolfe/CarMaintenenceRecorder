@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
       get 'records/:id', to: 'records#show'
       get 'records', to: 'records#all_for_vin'
-      post 'records/:vin/create', to: 'records#create'
+      post 'records/create', to: 'records#create'
       delete 'records/destroy/:id', to: 'records#destroy'
     end
   end

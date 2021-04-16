@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
 import API from "../api";
-import { BeatLoader } from "react-spinners";
+import { Button, Spinner } from "reactstrap";
+import RecordList from "./RecordList";
+import { useHistory } from "react-router-dom";
 
 const Car = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [car, setCar] = useState({});
-  const [records, setRecords] = useState({});
+  const [records, setRecords] = useState([]);
+  const total = records.reduce((total, record) => total + record.cost, 0) / 100;
   const {
     match: {
       params: { vin },
     },
   } = props;
+
+  const history = useHistory();
+
+  const handleDeleteCar = () => {
+    API.deleteCar(car.vin).then((response) =>
+      response.message == "Success" ? history.push("/") : console.log(response)
+    );
+  };
 
   useEffect(() => {
     API.getCar(vin)
@@ -23,20 +34,34 @@ const Car = (props) => {
   useEffect(() => {
     API.getRecordsForCar(vin)
       .then((response) => {
-        setRecords(records);
+        setRecords(response);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
   }, []);
 
   return (
-    <div className="car-info-container">
+    <div className={`car-info-container ${isLoading ? "loading" : ""}`}>
       {isLoading ? (
-        <BeatLoader color={"gray"} size={75} />
+        <Spinner style={{ width: "3rem", height: "3rem" }} color="secondary" />
       ) : (
-        <h3 className="car-header">
-          {car.year} {car.make} {car.model}
-        </h3>
+        <div className="car-info">
+          <div className="car-header">
+            <h3>
+              {car.year} {car.make} {car.model}
+            </h3>
+            <Button outline color="danger" onClick={handleDeleteCar}>
+              Delete Car
+            </Button>
+          </div>
+          <RecordList records={records} />
+          <div className="cost-total">
+            <h4>Total: ${total}</h4>
+          </div>
+          <Button onClick={() => history.push(`/car/${vin}/add`)}>
+            Add Maintenance Item...
+          </Button>
+        </div>
       )}
     </div>
   );
