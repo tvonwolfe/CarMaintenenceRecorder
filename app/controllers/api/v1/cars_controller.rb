@@ -6,6 +6,11 @@ class Api::V1::CarsController < ApplicationController
   end
 
   def create
+    req_headers = request.headers.env.select do |k, _|
+      k.downcase.start_with?('http') ||
+      k.in?(ActionDispatch::Http::Headers::CGI_VARIABLES)
+    end
+    puts req_headers
     car = Car.create!(car_params)
 
     if car

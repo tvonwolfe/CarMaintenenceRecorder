@@ -1,10 +1,9 @@
 class Api::V1::RecordsController < ApplicationController
   def create
     if car
-      actual_record_params = record_params.delete(:vin)
-      @record = car.maintenance_records.create!(record_params)
+      @record = car.maintenance_records.create!(record_params.except(:vin))
     else
-      render json: car.errors
+      render json: @record.errors
     end
 
     render json: @record
