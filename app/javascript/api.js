@@ -37,6 +37,7 @@ const API = {
   // fetch all cars.
   getAllCars: () => getData(`${CAR_API}/index`),
   deleteCar: (vin) => deleteData(`${CAR_API}/destroy/${vin}`),
+  getRecord: (recordId) => getData(`${RECORDS_API}/${recordId}`),
   getRecordsForCar: (vin) => getData(`${RECORDS_API}?vin=${vin}`),
   addRecord: (record) => postData(`${RECORDS_API}/create`, record),
   deleteRecord: (id) => deleteData(`${CAR_API}/destroy/${id}`),
