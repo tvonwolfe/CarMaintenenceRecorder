@@ -28,7 +28,7 @@ class Api::V1::RecordsController < ApplicationController
 
   def destroy
     record&.destroy
-    render json: { message: 'Record deleted.' }
+    render json: { message: 'Success' }
   end
 
   private 

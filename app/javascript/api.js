@@ -40,7 +40,7 @@ const API = {
   getRecord: (recordId) => getData(`${RECORDS_API}/${recordId}`),
   getRecordsForCar: (vin) => getData(`${RECORDS_API}?vin=${vin}`),
   addRecord: (record) => postData(`${RECORDS_API}/create`, record),
-  deleteRecord: (id) => deleteData(`${CAR_API}/destroy/${id}`),
+  deleteRecord: (id) => deleteData(`${RECORDS_API}/destroy/${id}`),
 };
 
 export default API;

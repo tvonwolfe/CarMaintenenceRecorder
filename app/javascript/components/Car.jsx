@@ -8,7 +8,6 @@ const Car = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [car, setCar] = useState({});
   const [records, setRecords] = useState([]);
-  const total = records.reduce((total, record) => total + record.cost, 0) / 100;
   const {
     match: {
       params: { vin },
@@ -19,7 +18,9 @@ const Car = (props) => {
 
   const handleDeleteCar = () => {
     API.deleteCar(car.vin).then((response) =>
-      response.message == "Success" ? history.push("/") : console.log(response)
+      response.message == "Success"
+        ? setTimeout(history.push("/"), 500)
+        : console.log(response)
     );
   };
 
@@ -55,9 +56,6 @@ const Car = (props) => {
             </Button>
           </div>
           <RecordList records={records} />
-          <div className="cost-total">
-            <h4>Total: ${total}</h4>
-          </div>
           <Button onClick={() => history.push(`/car/${vin}/add`)}>
             Add Maintenance Item...
           </Button>
